@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,6 +63,7 @@ fun HomeScreen(){
                     Text(
                         text = "VOLUME",
                         textAlign = TextAlign.Center,
+                        color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontSize = 30.sp
                     )
@@ -78,14 +81,22 @@ fun HomeScreen(){
                 }
             }
         }
+        Spacer(modifier = Modifier.height(40.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(270.dp)
+                .height(100.dp)
                 .padding(10.dp, 40.dp, 10.dp, 10.dp)
                 .background(Color.Black)
         ) {
-            Text(text = "Zone de texte pour la fréquence")
+            TextField(
+                value = "23.0", // Initial value
+                onValueChange = { /* Handle text input */ },
+                label = { Text("Entrer la frequence de l'appareil") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+            )
         }
     }
 }
