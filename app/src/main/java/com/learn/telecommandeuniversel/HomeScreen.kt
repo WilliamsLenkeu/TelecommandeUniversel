@@ -2,10 +2,12 @@ package com.learn.telecommandeuniversel
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -24,6 +26,7 @@ fun HomeScreen(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Ligne pour le bouton d'arret et de demarrage
         Row(
             modifier = Modifier
                 .width(180.dp)
@@ -33,14 +36,21 @@ fun HomeScreen(){
         ) {
             MyPowerButton()
         }
+        // Ligne pour le bouton de gestion du volume
         Row(
             modifier = Modifier
                 .width(150.dp)
-                .height(270.dp)
-                .padding(10.dp),
+                .height(350.dp)
+                .padding(5.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -55,13 +65,16 @@ fun HomeScreen(){
                         fontSize = 30.sp
                     )
                 }
+                Spacer(modifier = Modifier.height(20.dp))
                 Row(
                     modifier = Modifier
-                        .background(Color.Magenta)
-                        .fillMaxWidth()
-                        .fillMaxHeight()
+                        .clip(RoundedCornerShape(90.dp))
+                        .width(100.dp)
+                        .fillMaxHeight(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Espace pour le bouton")
+                    VolumeButton()
                 }
             }
         }
@@ -69,7 +82,7 @@ fun HomeScreen(){
             modifier = Modifier
                 .fillMaxWidth()
                 .height(270.dp)
-                .padding(10.dp, 80.dp, 10.dp, 10.dp)
+                .padding(10.dp, 40.dp, 10.dp, 10.dp)
                 .background(Color.Black)
         ) {
             Text(text = "Zone de texte pour la fréquence")

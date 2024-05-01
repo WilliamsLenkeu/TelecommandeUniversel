@@ -58,7 +58,3 @@ fun MyPowerButton() {
 
     }
 }
-
-fun VolumeButtom() {
-
-}
