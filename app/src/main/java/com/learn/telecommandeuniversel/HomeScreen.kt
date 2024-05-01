@@ -30,7 +30,7 @@ fun HomeScreen(){
         Row(
             modifier = Modifier
                 .width(180.dp)
-                .height(270.dp)
+                .height(200.dp)
                 .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
