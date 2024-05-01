@@ -7,7 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.learn.telecommandeuniversel.ui.theme.background
 
 @Composable
@@ -32,13 +35,35 @@ fun HomeScreen(){
         }
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .width(150.dp)
                 .height(270.dp)
-                .padding(10.dp)
-                .background(Color.Red),
+                .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(text = "Autres boutons")
+            Column {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(40.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "VOLUME",
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 30.sp
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .background(Color.Magenta)
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                ) {
+                    Text(text = "Espace pour le bouton")
+                }
+            }
         }
         Row(
             modifier = Modifier
