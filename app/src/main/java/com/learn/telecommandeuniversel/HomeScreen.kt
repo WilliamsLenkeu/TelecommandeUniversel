@@ -1,6 +1,7 @@
 package com.learn.telecommandeuniversel
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -9,13 +10,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.learn.telecommandeuniversel.models.TelecommandeConfigManager
 import com.learn.telecommandeuniversel.ui.theme.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
 
 @Composable
 fun HomeScreen() {
@@ -92,33 +100,96 @@ fun HomeScreen() {
 
 @Composable
 fun ConfigurationsSection(configManager: TelecommandeConfigManager) {
+    var selectedBrand by remember { mutableStateOf("") }
+    var selectedFunction by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
             .padding(10.dp, 40.dp, 10.dp, 10.dp)
             .background(Color.Black)
     ) {
-        // Afficher les configurations
-        configManager.teleConfigurations.forEach { config ->
-            Text(
-                text = "Type: ${config.type}, Nom: ${config.nom}, Fonction: ${config.function}, Pattern: ${config.pattern}, Fréquence: ${config.frequence}",
-                color = Color.White,
-                fontSize = 16.sp,
-                modifier = Modifier.padding(5.dp)
-            )
-        }
-
-        // Ajoutez d'autres éléments de configuration si nécessaire
-
-        // Recherche de la fréquence pour une fonction spécifique
-        val functionToSearch = "Fonction1" // Vous pouvez changer la fonction ici
-        val frequency = configManager.findFrequencyByFunction(functionToSearch)
+        // Choix de la marque de télévision
         Text(
-            text = "Fréquence pour $functionToSearch: ${frequency ?: "Non trouvé"}",
+            text = "Choisir la marque de télévision :",
             color = Color.White,
             fontSize = 16.sp,
             modifier = Modifier.padding(5.dp)
         )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row {
+            BrandButton("LG", selectedBrand) { selectedBrand = "LG" }
+            Spacer(modifier = Modifier.width(10.dp))
+            BrandButton("Samsung", selectedBrand) { selectedBrand = "Samsung" }
+        }
+
+        // Choix de la fonction
+        Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            text = "Choisir la fonction :",
+            color = Color.White,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(5.dp)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row {
+            configManager.teleConfigurations
+                .filter { it.type == selectedBrand }
+                .forEach { config ->
+                    FunctionButton(config.function, selectedFunction) { selectedFunction = config.function }
+                }
+        }
+
+        // Afficher les configurations correspondantes
+        Spacer(modifier = Modifier.height(20.dp))
+        if (selectedBrand.isNotEmpty() && selectedFunction.isNotEmpty()) {
+            // Vous pouvez appeler ici les fonctions pour interagir avec la télévision
+            Button(onClick = {
+                when (selectedFunction) {
+                    "POWER" -> configManager.sendPowerCommand(selectedBrand)
+                    /*"VOLUME +" -> configManager.sendVolumePlusCommand(selectedBrand)
+                    "VOLUME -" -> configManager.sendVolumeMinusCommand(selectedBrand)
+                    */// Ajoutez d'autres fonctions ici si nécessaire
+                }
+            }) {
+                Text(text = selectedFunction)
+            }
+        }
     }
 }
+
+@Composable
+fun BrandButton(text: String, selectedBrand: String, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .background(if (text == selectedBrand) Color.Gray else Color.White)
+            .clickable(onClick = onClick)
+            .padding(8.dp)
+    ) {
+        Text(
+            text = text,
+            color = if (text == selectedBrand) Color.White else Color.Black,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+@Composable
+fun FunctionButton(text: String, selectedFunction: String, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .background(if (text == selectedFunction) Color.Gray else Color.White)
+            .clickable(onClick = onClick)
+            .padding(8.dp)
+    ) {
+        Text(
+            text = text,
+            color = if (text == selectedFunction) Color.White else Color.Black,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+
