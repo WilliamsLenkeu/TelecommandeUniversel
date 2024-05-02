@@ -14,10 +14,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.learn.telecommandeuniversel.models.TelecommandeConfigManager
 import com.learn.telecommandeuniversel.ui.theme.background
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen() {
+    val configManager = TelecommandeConfigManager
+
+    // Afficher les configurations de télécommande
     Column(
         modifier = Modifier
             .background(background)
@@ -27,13 +31,13 @@ fun HomeScreen(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Ligne pour le bouton d'arret et de demarrage
+        // Ligne pour le bouton d'arrêt et de démarrage
         Row(
             modifier = Modifier
                 .width(180.dp)
                 .height(200.dp)
                 .padding(10.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             MyPowerButton()
         }
@@ -43,7 +47,7 @@ fun HomeScreen(){
                 .width(150.dp)
                 .height(350.dp)
                 .padding(5.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
                 modifier = Modifier
@@ -81,21 +85,40 @@ fun HomeScreen(){
             }
         }
         Spacer(modifier = Modifier.height(40.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(10.dp, 40.dp, 10.dp, 10.dp)
-                .background(Color.Black)
-        ) {
-            TextField(
-                value = "23.0", // Initial value
-                onValueChange = { /* Handle text input */ },
-                label = { Text("Entrer la frequence de l'appareil") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
+        // Afficher les champs de configuration
+        ConfigurationsSection(configManager)
+    }
+}
+
+@Composable
+fun ConfigurationsSection(configManager: TelecommandeConfigManager) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(10.dp, 40.dp, 10.dp, 10.dp)
+            .background(Color.Black)
+    ) {
+        // Afficher les configurations
+        configManager.teleConfigurations.forEach { config ->
+            Text(
+                text = "Type: ${config.type}, Nom: ${config.nom}, Fonction: ${config.function}, Pattern: ${config.pattern}, Fréquence: ${config.frequence}",
+                color = Color.White,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(5.dp)
             )
         }
+
+        // Ajoutez d'autres éléments de configuration si nécessaire
+
+        // Recherche de la fréquence pour une fonction spécifique
+        val functionToSearch = "Fonction1" // Vous pouvez changer la fonction ici
+        val frequency = configManager.findFrequencyByFunction(functionToSearch)
+        Text(
+            text = "Fréquence pour $functionToSearch: ${frequency ?: "Non trouvé"}",
+            color = Color.White,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(5.dp)
+        )
     }
 }
