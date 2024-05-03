@@ -23,7 +23,7 @@ fun MyPowerButton() {
     var isClicked by remember { mutableStateOf(false) }
     val play = painterResource(id = R.drawable.fermer)
     val stop = painterResource(id = R.drawable.allumer)
-    val backgroundColor = if (isClicked) Color(0x54FA6464) else Color(0x5485FA64)
+    val backgroundColor = if (isClicked) Color(0x9AFA6464) else Color(0x9A85FA64)
 
     IconButton(
         onClick = { isClicked = !isClicked },

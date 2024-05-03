@@ -73,7 +73,7 @@ fun RemoteControl(){
                     Text(
                         text = "VOLUME",
                         textAlign = TextAlign.Center,
-                        color = Color.White,
+                        color = Color.Black,
                         fontWeight = FontWeight.Bold,
                         fontSize = 30.sp
                     )

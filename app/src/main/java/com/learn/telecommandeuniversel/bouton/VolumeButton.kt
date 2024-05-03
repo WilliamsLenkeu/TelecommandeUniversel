@@ -32,7 +32,7 @@ fun VolumeButton() {
     var countValue by rememberSaveable { mutableIntStateOf(50) }
     Column(
         modifier = Modifier
-            .background(Color.White)
+            .background(Color(0xFFBBBBBB))
             .padding(16.dp)
             .fillMaxHeight()
             .fillMaxWidth(),

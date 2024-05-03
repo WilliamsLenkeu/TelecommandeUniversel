@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.learn.telecommandeuniversel.ui.theme.TelecommandeUniverselTheme
 import com.learn.telecommandeuniversel.view.HomeScreen
+import com.learn.telecommandeuniversel.view.RemoteControl
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen()
+//                    HomeScreen()
+                    RemoteControl()
                 }
             }
         }
