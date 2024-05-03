@@ -1,4 +1,4 @@
-package com.learn.telecommandeuniversel
+package com.learn.telecommandeuniversel.bouton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
