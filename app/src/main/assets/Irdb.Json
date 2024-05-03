@@ -1,0 +1,220 @@
+{
+  "remotes": [
+    {
+      "id": "1",
+      "marque": "Samsung",
+      "type": "Tv",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Power",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume +",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume -",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "marque": "LG",
+      "type": "Tv",
+      "models": [
+        {
+          "nom": "2",
+          "fonction": [
+            {
+              "nom": "Power",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume +",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume -",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "marque": "Sony",
+      "type": "DVD_PLAYER",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Play",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Stop",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Eject",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "marque": "Samsung",
+      "type": "Air_conditioner",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Power",
+              "pattern": [4512,4512,564,1692,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,1692,564,564,564,564,564,1692,564,1692,564,1692,564,1692,564,1692,564,1692,564,564,564,564,564,58828],
+              "frequence": 38400
+            },
+            {
+              "nom": "TEMP+",
+              "pattern": [4512,4512,564,1692,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,564,1692,564,564,564,564,564,564,564,1692,564,564,564,564,564,1692,564,1692,564,564,564,564,564,62212],
+              "frequence": 38400
+            },
+            {
+              "nom": "TEMP-",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "marque": "Apple",
+      "type": "Streaming_Device",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Play",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Pause",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Rewind",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "marque": "Bose",
+      "type": "Speaker",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Power",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume Up",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Volume Down",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "marque": "LG",
+      "type": "Air_Conditioner",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Power",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Temperature Up",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Temperature Down",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "marque": "Google",
+      "type": "Smart_Home_Device",
+      "models": [
+        {
+          "nom": "1",
+          "fonction": [
+            {
+              "nom": "Activate",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Deactivate",
+              "pattern": [],
+              "frequence": 38400
+            },
+            {
+              "nom": "Check_Status",
+              "pattern": [],
+              "frequence": 38400
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

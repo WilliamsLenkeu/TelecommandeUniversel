@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.learn.telecommandeuniversel.R
 
 @Composable
-fun MyPowerButton() {
+fun MyPowerButton(id: Int) {
     var isClicked by remember { mutableStateOf(false) }
     val play = painterResource(id = R.drawable.fermer)
     val stop = painterResource(id = R.drawable.allumer)

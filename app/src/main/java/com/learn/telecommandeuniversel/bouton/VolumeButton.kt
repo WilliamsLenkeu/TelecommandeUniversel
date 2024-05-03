@@ -28,8 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun VolumeButton() {
-    var countValue by rememberSaveable { mutableIntStateOf(50) }
+fun VolumeButton(id: Int) {
     Column(
         modifier = Modifier
             .background(Color(0xFFBBBBBB))
@@ -45,7 +44,7 @@ fun VolumeButton() {
                 .height(57.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            IconButton(onClick = { countValue++ }) {
+            IconButton(onClick = {}) {
                 Icon(
                     Icons.Sharp.KeyboardArrowUp,
                     contentDescription = "Up",
@@ -64,8 +63,8 @@ fun VolumeButton() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "$countValue",
-                color = Color.Black,
+                text = ".",
+                color = Color(0xFFBBBBBB),
                 fontWeight = FontWeight.Bold,
                 fontSize = 30.sp
             )
@@ -76,7 +75,7 @@ fun VolumeButton() {
                 .height(57.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            IconButton(onClick = { countValue-- }) {
+            IconButton(onClick = {}) {
                 Icon(
                     Icons.Sharp.KeyboardArrowDown,
                     contentDescription = "Down",
