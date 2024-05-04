@@ -58,7 +58,20 @@ fun VolumeButton(id: Int) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(117.dp),
+                .height(22.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "+",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(77.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -67,6 +80,19 @@ fun VolumeButton(id: Int) {
                 color = Color(0xFFBBBBBB),
                 fontWeight = FontWeight.Bold,
                 fontSize = 30.sp
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(25.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "-",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
             )
         }
         Row(

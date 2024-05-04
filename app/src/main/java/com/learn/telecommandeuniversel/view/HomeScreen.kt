@@ -7,11 +7,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.learn.telecommandeuniversel.models.Remote
 import com.learn.telecommandeuniversel.bouton.HomeScreenList
 
 @Composable
-fun HomeScreen(remotes: List<Remote>) {
+fun HomeScreen(navController: NavController, remotes: List<Remote>) {
 
     LazyColumn(
         modifier = Modifier
@@ -19,7 +20,7 @@ fun HomeScreen(remotes: List<Remote>) {
             .padding(10.dp)
     ) {
         items(remotes) { remote ->
-            HomeScreenList(remote= remote)
+            HomeScreenList(navController = navController, remote = remote)
         }
     }
 }

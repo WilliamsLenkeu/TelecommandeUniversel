@@ -17,81 +17,78 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.learn.telecommandeuniversel.R
 import com.learn.telecommandeuniversel.models.Remote
 import com.learn.telecommandeuniversel.ui.theme.background2
 import com.learn.telecommandeuniversel.view.RemoteControl
 
 @Composable
-fun HomeScreenList(remote: Remote) {
+fun HomeScreenList(navController: NavController, remote: Remote) {
     val icon = getIconForDeviceType(remote.type)
     var showRemoteControl by remember { mutableStateOf(false) }
 
-    if (!showRemoteControl) {
-        Row(
+//    if (!showRemoteControl) {
+    Row(
+        modifier = Modifier
+            .padding(15.dp)
+            .fillMaxWidth()
+            .height(80.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(background2),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(
             modifier = Modifier
-                .padding(15.dp)
-                .fillMaxWidth()
-                .height(80.dp)
-                .clip(RoundedCornerShape(20.dp))
-                .background(background2),
-            verticalAlignment = Alignment.CenterVertically
+                .width(110.dp)
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
+            Image(
+                painter = painterResource(id = icon),
+                contentDescription = "Device Icon",
                 modifier = Modifier
-                    .width(110.dp)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Image(
-                    painter = painterResource(id = icon),
-                    contentDescription = "Device Icon",
-                    modifier = Modifier
-                        .size(75.dp)
-                        .padding(10.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .width(110.dp)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = remote.marque,
-                    color = Color.White
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .width(230.dp)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                IconButton(
-                    onClick = { showRemoteControl = true },
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFF020520))
-                ) {
-                    Icon(
-                        Icons.Sharp.KeyboardArrowRight,
-                        contentDescription = "Continue",
-                        tint = Color.White
-                    )
-                }
-            }
+                    .size(75.dp)
+                    .padding(10.dp)
+                    .clip(RoundedCornerShape(10.dp))
+            )
         }
-    }
-
-    if (showRemoteControl) {
-        remote.models.forEach { model ->
-            RemoteControl(remote.id)
+        Column(
+            modifier = Modifier
+                .width(110.dp)
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = remote.marque,
+                color = Color.White
+            )
+        }
+        Column(
+            modifier = Modifier
+                .width(230.dp)
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            IconButton(
+                onClick = {
+                    showRemoteControl = true
+                    navController.navigate("remote/${remote.id}")
+                },
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .clip(CircleShape)
+                    .background(Color(0xFF020520))
+            ) {
+                Icon(
+                    Icons.Sharp.KeyboardArrowRight,
+                    contentDescription = "Continue",
+                    tint = Color.White
+                )
+            }
         }
     }
 }
