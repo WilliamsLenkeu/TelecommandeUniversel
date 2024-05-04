@@ -1,5 +1,5 @@
-package com.learn.telecommandeuniversel
-
+import android.content.Context
+import android.hardware.ConsumerIrManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,11 +22,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MyPowerButton() {
+fun MyPowerButton(context: Context) {
     var isClicked by remember { mutableStateOf(false) }
 
     IconButton(
-        onClick = { isClicked = !isClicked },
+        onClick = {
+            // Inverser l'état de clic
+            isClicked = !isClicked
+            // Appeler la fonction associée à l'alimentation
+            if (isClicked) {
+                emitPowerSignal(context)
+            }
+        },
         modifier = Modifier
             .padding(8.dp)
             .size(150.dp)
@@ -56,5 +63,26 @@ fun MyPowerButton() {
             )
         }
 
+    }
+}
+
+fun emitPowerSignal(context: Context) {
+    // Récupérer l'instance de ConsumerIrManager
+    val irManager = context.getSystemService(Context.CONSUMER_IR_SERVICE) as? ConsumerIrManager
+
+    // Vérifier si l'émetteur infrarouge est disponible
+    if (irManager?.hasIrEmitter() == true) {
+        // Définir la fréquence et le motif du signal infrarouge pour allumer/éteindre
+        val frequency = 38400 // Fréquence en Hz
+        val pattern = intArrayOf(9024,4512,564,564,564,564,564,1692,564,564,564,564,564,564,
+            564,564,564,564,564,1692,564,1692,564,564,564,1692,564,1692,564,1692,564,1692,564,
+            1692,564,564,564,564,564,564,564,1692,564,564,564,564,564,564,564,564,564,1692,564,
+            1692,564,1692,564,564,564,1692,564,1692,564,1692,564,1692,564,39756) // Modèle de signal
+
+        // Émettre le signal infrarouge
+        irManager.transmit(frequency, pattern)
+    } else {
+        // Gérer si l'émetteur infrarouge n'est pas disponible sur ce dispositif
+        println("L'émetteur infrarouge n'est pas disponible sur ce dispositif.")
     }
 }
