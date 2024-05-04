@@ -1,10 +1,19 @@
 package com.learn.telecommandeuniversel.models
 
-data class Device(
+data class Remote(
     val id: Int,
+    val marque: String,
     val type: String,
-    val brand: String,
-    val function: String,
+    val models: List<Model>
+)
+
+data class Model(
+    val name: String,
+    val functions: List<Function>
+)
+
+data class Function(
+    val name: String,
     val pattern: IntArray,
     val frequency: Int
 ) {
@@ -12,12 +21,9 @@ data class Device(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Device
+        other as Function
 
-        if (id != other.id) return false
-        if (type != other.type) return false
-        if (brand != other.brand) return false
-        if (function != other.function) return false
+        if (name != other.name) return false
         if (!pattern.contentEquals(other.pattern)) return false
         if (frequency != other.frequency) return false
 
@@ -25,10 +31,7 @@ data class Device(
     }
 
     override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + type.hashCode()
-        result = 31 * result + brand.hashCode()
-        result = 31 * result + function.hashCode()
+        var result = name.hashCode()
         result = 31 * result + pattern.contentHashCode()
         result = 31 * result + frequency
         return result

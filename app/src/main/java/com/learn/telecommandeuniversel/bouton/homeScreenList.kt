@@ -1,4 +1,4 @@
-package com.learn.telecommandeuniversel.models
+package com.learn.telecommandeuniversel.bouton
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,12 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.learn.telecommandeuniversel.R
+import com.learn.telecommandeuniversel.models.Remote
 import com.learn.telecommandeuniversel.ui.theme.background2
 import com.learn.telecommandeuniversel.view.RemoteControl
 
 @Composable
-fun HomeScreenList(device: Device) {
-    val icon = getIconForDeviceType(device.type)
+fun HomeScreenList(remote: Remote) {
+    val icon = getIconForDeviceType(remote.type)
     var showRemoteControl by remember { mutableStateOf(false) }
 
     if (!showRemoteControl) {
@@ -60,7 +61,7 @@ fun HomeScreenList(device: Device) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = device.brand,
+                    text = remote.marque,
                     color = Color.White
                 )
             }
@@ -89,16 +90,20 @@ fun HomeScreenList(device: Device) {
     }
 
     if (showRemoteControl) {
-        RemoteControl(device.id)
+        remote.models.forEach { model ->
+            RemoteControl(remote.id)
+        }
     }
 }
 
 @Composable
 private fun getIconForDeviceType(deviceType: String): Int {
     return when (deviceType) {
-        "TV" -> R.drawable.tv
+        "Tv" -> R.drawable.tv
         "DVD_PLAYER" -> R.drawable.cd
-        "AUDIO_SURROUND" -> R.drawable.stereo
+        "Audio" -> R.drawable.stereo
+        "Sound_bar" -> R.drawable.stereo
+        "Air_conditioner" -> R.drawable.climatiseur
         else -> R.drawable.device
     }
 }

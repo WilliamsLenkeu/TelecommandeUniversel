@@ -7,19 +7,19 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.learn.telecommandeuniversel.models.Device
-import com.learn.telecommandeuniversel.models.HomeScreenList
+import com.learn.telecommandeuniversel.models.Remote
+import com.learn.telecommandeuniversel.bouton.HomeScreenList
 
 @Composable
-fun HomeScreen(devices: List<Device>) {
+fun HomeScreen(remotes: List<Remote>) {
 
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        items(devices) { device ->
-            HomeScreenList(device = device)
+        items(remotes) { remote ->
+            HomeScreenList(remote= remote)
         }
     }
 }
