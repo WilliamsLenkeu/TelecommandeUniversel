@@ -35,7 +35,7 @@ import java.io.InputStreamReader
 @Composable
 fun RemoteControl(id: Int, navController: NavController) {
     val context = LocalContext.current
-    val remote = getRemoteById(context, id)
+    val Remote = getRemoteById(context, id)
 
     Column(
         modifier = Modifier
@@ -73,7 +73,7 @@ fun RemoteControl(id: Int, navController: NavController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
-                val icon = painterResource(id = getIconResourceId(remote.type))
+                val icon = painterResource(id = getIconResourceId(Remote.type))
                 Image(
                     painter = icon,
                     contentDescription = "Device Icon",
@@ -83,13 +83,13 @@ fun RemoteControl(id: Int, navController: NavController) {
                         .clip(RoundedCornerShape(10.dp))
                 )
                 Text(
-                    text = remote.type,
+                    text = Remote.type,
                     color = Color.White,
                     fontSize = 30.sp
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = remote.marque,
+                    text = Remote.marque,
                     color = Color.White,
                     fontSize = 20.sp
                 )
@@ -102,7 +102,7 @@ fun RemoteControl(id: Int, navController: NavController) {
                     .padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                MyPowerButton(id = remote.id)
+                MyPowerButton(Remote, context)
             }
             Row(
                 modifier = Modifier
@@ -119,7 +119,7 @@ fun RemoteControl(id: Int, navController: NavController) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    VolumeButton(id = remote.id)
+                    VolumeButton(id = Remote.id)
                 }
             }
             Spacer(modifier = Modifier.height(50.dp))
