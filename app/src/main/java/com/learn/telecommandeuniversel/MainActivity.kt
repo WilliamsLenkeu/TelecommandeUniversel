@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = background
                 ) {
+                    Text(text = "Saloute")
                     MyApp()
                 }
             }
@@ -44,7 +46,7 @@ class MainActivity : ComponentActivity() {
     fun MyApp() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "home") {
-            composable("home") {
+            composable("home"){
                 val remotes = remember { readRemotesFromJson() }
                 HomeScreen(navController = navController, remotes = remotes)
             }
