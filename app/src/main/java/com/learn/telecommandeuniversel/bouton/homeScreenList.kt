@@ -28,7 +28,7 @@ fun HomeScreenList(navController: NavController, remote: Remote) {
     val icon = getIconForDeviceType(remote.type)
     var showRemoteControl by remember { mutableStateOf(false) }
 
-//    if (!showRemoteControl) {
+    /* if (!showRemoteControl) { */
     Row(
         modifier = Modifier
             .padding(15.dp)
