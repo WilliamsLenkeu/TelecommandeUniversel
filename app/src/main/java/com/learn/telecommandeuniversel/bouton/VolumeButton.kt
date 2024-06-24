@@ -1,4 +1,4 @@
-package com.learn.telecommandeuniversel
+package com.learn.telecommandeuniversel.bouton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,11 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun VolumeButton() {
-    var countValue by rememberSaveable { mutableIntStateOf(50) }
+fun VolumeButton(id: Int) {
     Column(
         modifier = Modifier
-            .background(Color.White)
+            .background(Color(0xFFBBBBBB))
             .padding(16.dp)
             .fillMaxHeight()
             .fillMaxWidth(),
@@ -45,7 +44,7 @@ fun VolumeButton() {
                 .height(57.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            IconButton(onClick = { countValue++ }) {
+            IconButton(onClick = {}) {
                 Icon(
                     Icons.Sharp.KeyboardArrowUp,
                     contentDescription = "Up",
@@ -59,15 +58,41 @@ fun VolumeButton() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(117.dp),
+                .height(22.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "$countValue",
-                color = Color.Black,
+                text = "+",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(77.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = ".",
+                color = Color(0xFFBBBBBB),
                 fontWeight = FontWeight.Bold,
                 fontSize = 30.sp
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(25.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "-",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
             )
         }
         Row(
@@ -76,7 +101,7 @@ fun VolumeButton() {
                 .height(57.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            IconButton(onClick = { countValue-- }) {
+            IconButton(onClick = {}) {
                 Icon(
                     Icons.Sharp.KeyboardArrowDown,
                     contentDescription = "Down",

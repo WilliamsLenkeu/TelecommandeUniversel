@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "type": "TV",
+    "brand": "Samsung",
+    "function": "Power",
+    "pattern": [
+      123,
+      456,
+      789
+    ],
+    "frequency": 38
+  },
+  {
+    "id": 2,
+    "type": "TV",
+    "brand": "LG",
+    "function": "Channel Up",
+    "pattern": [
+      111,
+      222,
+      333
+    ],
+    "frequency": 36
+  },
+  {
+    "id": 3,
+    "type": "TV",
+    "brand": "Sony",
+    "function": "Volume Down",
+    "pattern": [
+      987,
+      654,
+      321
+    ],
+    "frequency": 40
+  },
+  {
+    "id": 4,
+    "type": "DVD_PLAYER",
+    "brand": "Sony",
+    "function": "Play",
+    "pattern": [
+      987,
+      654,
+      321
+    ],
+    "frequency": 40
+  },
+  {
+    "id": 5,
+    "type": "DVD_PLAYER",
+    "brand": "LG",
+    "function": "Stop",
+    "pattern": [
+      111,
+      222,
+      333
+    ],
+    "frequency": 36
+  },
+  {
+    "id": 6,
+    "type": "DVD_PLAYER",
+    "brand": "Samsung",
+    "function": "Eject",
+    "pattern": [
+      123,
+      456,
+      789
+    ],
+    "frequency": 38
+  },
+  {
+    "id": 7,
+    "type": "AUDIO_SURROUND",
+    "brand": "LG",
+    "function": "Volume",
+    "pattern": [
+      111,
+      222,
+      333
+    ],
+    "frequency": 36
+  },
+  {
+    "id": 8,
+    "type": "AUDIO_SURROUND",
+    "brand": "Sony",
+    "function": "Mute",
+    "pattern": [
+      987,
+      654,
+      321
+    ],
+    "frequency": 40
+  },
+  {
+    "id": 9,
+    "type": "AUDIO_SURROUND",
+    "brand": "Samsung",
+    "function": "Power",
+    "pattern": [
+      123,
+      456,
+      789
+    ],
+    "frequency": 38
+  },
+  {
+    "id": 10,
+    "type": "Streaming_Device",
+    "brand": "Roku",
+    "function": "Navigate",
+    "pattern": [
+      555,
+      666,
+      777
+    ],
+    "frequency": 42
+  },
+  {
+    "id": 11,
+    "type": "Game_Console",
+    "brand": "Microsoft",
+    "function": "Power",
+    "pattern": [
+      888,
+      999,
+      223
+    ],
+    "frequency": 44
+  },
+  {
+    "id": 12,
+    "type": "Smart_Home_Device",
+    "brand": "Google",
+    "function": "Activate",
+    "pattern": [
+      111,
+      222,
+      333
+    ],
+    "frequency": 36
+  }
+]
