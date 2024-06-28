@@ -101,6 +101,7 @@ private fun getIconForDeviceType(deviceType: String): Int {
         "Audio" -> R.drawable.stereo
         "Sound_bar" -> R.drawable.stereo
         "Air_conditioner" -> R.drawable.climatiseur
+        "Blu-ray" -> R.drawable.blu_ray
         else -> R.drawable.device
     }
 }

@@ -13,13 +13,14 @@ import com.learn.telecommandeuniversel.bouton.HomeScreenList
 
 @Composable
 fun HomeScreen(navController: NavController, remotes: List<Remote>) {
+    val sortedRemotes = remotes.sortedBy { it.marque }
 
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        items(remotes) { remote ->
+        items(sortedRemotes) { remote ->
             HomeScreenList(navController = navController, remote = remote)
         }
     }
